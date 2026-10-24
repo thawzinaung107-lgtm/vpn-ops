@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+do_state.json
+monitor_state.json
+*.tgz
+.env
