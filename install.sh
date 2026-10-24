@@ -47,7 +47,7 @@ cat > /etc/cron.d/vpn-monitor <<'EOF'
 0 9 * * * root . /etc/environment && /usr/bin/python3 /opt/failover/monitor.py digest >> /var/log/vpn-monitor.log 2>&1
 EOF
 cat > /etc/cron.d/vpn-backup <<'EOF'
-0 3 * * * root NODE_PASSWORD="${NODE_PASSWORD:-Amnezia@123456Amnezia}" /opt/failover/backup_nodes.sh >> /var/log/vpn-backup.log 2>&1
+0 3 * * * root NODE_PASSWORD="${NODE_PASSWORD:?set NODE_PASSWORD in /etc/environment}" /opt/failover/backup_nodes.sh >> /var/log/vpn-backup.log 2>&1
 EOF
 systemctl restart cron
 echo "installed. add Caddy route: handle /do* { reverse_proxy 127.0.0.1:8787 }"
